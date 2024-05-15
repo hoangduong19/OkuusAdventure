@@ -21,7 +21,7 @@ The controls are as simple as the original. But, there are some new features in 
 - Counting score systems and highscore board.
 - <b>ESPECIALLY</b>, Shield System and Explosion Skill.
 ## 🚀My Future Plan
-- Adding more bird skins and maps.
+- Adding more skins for Okuu and maps.
 - Adding more powerups like x2Score, make gap height between two pipes bigger.
 - Making game harder when reaching a certain score.
 - Enhance the code of explosion skill.
