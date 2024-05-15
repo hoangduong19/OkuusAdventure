@@ -1,4 +1,4 @@
-﻿#include "Gameloop.h"
+#include "Gameloop.h"
 Gameloop::Gameloop()
 {
 	window = NULL;
@@ -10,7 +10,7 @@ Gameloop::Gameloop()
 	x_button_shown = false;
 	start_shown = true; instruction_shown = true; quit_shown = true; restart_shown = false; level_shown = false; leftkey_shown = false; sound_on = true; sound_shown = true; level_button_shown = false;
 	level_classic_shown = false; ready = false; playing = false; bird_die = true; can_score = true; in_space_pipe = false; space_shown = false; menu_shown = true; in_game = false;
-	is_on_ground = false; powerUp_shown = false; shield_shown = false; have_shield = false; skill_clicked = false;
+	is_on_ground = false; powerUp_shown = false; shield_shown = false; have_shield = false; skill_clicked = false; skill_ready = true;
 	count = 0;
 	currentScore = 0;
 	life = 1;
@@ -173,7 +173,7 @@ void Gameloop::new_game()
 	restart_shown = false;
 	level_button_shown = false;
 	ready = true; playing = false; bird_die = false; is_on_ground = false;
-	powerUp_shown = false; shield_shown = false; have_shield = false; skill_clicked = false;
+	powerUp_shown = false; shield_shown = false; have_shield = false; skill_clicked = false; skill_ready = true;
 	count = 0;
 	currentScore = 0;
 	life = 1;
@@ -433,7 +433,7 @@ void Gameloop::Event()
 				Mix_PlayChannel(-1, gameStartSFX, 0);
 				break;
 			case SDLK_s:
-				if (explosion.isSkillReady())
+				if (explosion.isSkillReady(skill_ready))
 				{
 					Mix_VolumeChunk(explosion_sound, 50);
 					Mix_PlayChannel(-1, explosion_sound, 0);
@@ -445,7 +445,7 @@ void Gameloop::Event()
 						pipebots[i].setDest(540 + 400 * i, yBot, 302 / 3, 840 / 2.75); // Set the destination for the bottom pipe
 					}
 					skill_clicked = true;
-					explosion.activateCooldown();
+					explosion.activateCooldown(skill_ready);
 				}
 			}
 		}
@@ -773,7 +773,7 @@ void Gameloop::render()
 		score.RenderText(renderer);
 		if (powerUp_shown && shield_shown) shield.Render(renderer);
 		if (have_shield) okuu_protected.Render(renderer);
-		if (explosion.isSkillReady()) explosion.Render(renderer);
+		if (explosion.isSkillReady(skill_ready)) explosion.Render(renderer);
 		if (skill_clicked) {
 			explosion_effect.updateFrame(2, 10, renderer, filepathOfExplosion);
 		}
