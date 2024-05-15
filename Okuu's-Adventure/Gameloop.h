@@ -78,7 +78,7 @@ private:
 	bool level_classic_shown, space_shown, menu_shown;
 	bool ready, playing,check_restart, bird_die, in_space_pipe, can_score, is_on_ground, in_game, highScore_call;
 	bool powerUp_shown, shield_shown;
-	bool have_shield, skill_clicked;
+	bool have_shield, skill_clicked, skill_ready;
 	const char* filepathofLevels[5] = { "rsc/Levels/Levels1.png","rsc/Levels/Levels2.png","rsc/Levels/Levels3.png","rsc/Levels/Levels4.png","rsc/Levels/Levels5.png" };
 	const char* filepathOfStart[5] = { "rsc/Start/Start1.png","rsc/Start/Start2.png","rsc/Start/Start3.png","rsc/Start/Start4.png","rsc/Start/Start5.png" };
 	const char* filepathOfSettings[5] = { "rsc/Settings/Settings1.png","rsc/Settings/Settings2.png","rsc/Settings/Settings3.png","rsc/Settings/Settings4.png","rsc/Settings/Settings5.png" };
