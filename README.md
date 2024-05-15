@@ -1,4 +1,4 @@
-# Okuu's Adventure
+# Okuu's Adventure🐦
 ### 🐦A Remake of Dong Nguyen's banger in 2013🐦
 🚀 Welcome to My SDL C++ Project! As known as my UET assignment about coding Game 🚀
 ![design](https://github.com/hoangduong19/OkuusAdventure/assets/160806540/10c8f30c-4c45-4db3-ab1c-a2e05a79b192)
