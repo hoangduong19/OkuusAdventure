@@ -25,8 +25,9 @@ The controls are as simple as the original. But, there are some new features in 
 ## 🚀My Future Plan🚀
 - A wardrobe of skins for Okuu and a variety of new maps to explore.
 - Power-ups to double your score and widen the pipe gaps for easier passing.
-- An enhanced explosion skill code for even more spectacular gameplay.
+- An enhanced explosion skill animation for even more spectacular gameplay.
 - Making transition to another map when reaching 50 points.
+- Optimized code to reduce the length and enhance efficiency.
 ## 📞Contact📞
 You can find me on [Facebook](https://www.facebook.com/manchesterisred190105?_rdc=1&_rdr). <br/>
 Gmail: hoangduong190105@gmail.com <br/>
