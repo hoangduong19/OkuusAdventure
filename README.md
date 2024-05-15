@@ -23,7 +23,7 @@ The controls are as simple as the original. But, there are some new features in 
 ## 🚀My Future Plan🚀
 - Adding more skins for Okuu and maps.
 - Adding more powerups like x2Score, make gap height between two pipes bigger.
-- Making game harder when reaching a certain score.
+- Making transition to another map when reaching 50 points.
 ## 📞Contact📞
 You can find me on [Facebook](https://www.facebook.com/manchesterisred190105?_rdc=1&_rdr). <br/>
 Gmail: hoangduong190105@gmail.com
