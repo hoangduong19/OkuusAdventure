@@ -8,13 +8,21 @@ PowerUp::PowerUp()
 	cooldownDuration = 15000;
 	lastActivationTime = 0;
 }
-void PowerUp::activateCooldown()
+void PowerUp::activateCooldown(bool& skill_ready)
 {
-	lastActivationTime = SDL_GetTicks();
+	lastActivationTime = SDL_GetTicks();//lay moc thoi gian hien tai
+	skill_ready = false;
 }
-bool PowerUp::isSkillReady() {
+bool PowerUp::isSkillReady(bool& skill_ready) {
 	Uint32 currentTime = SDL_GetTicks();
-	return (currentTime - lastActivationTime) >= cooldownDuration;
+	//if (currentTime == 0) return true;
+	if (skill_ready) return true;
+	if ((currentTime - lastActivationTime) >= cooldownDuration)
+	{
+		skill_ready = true;
+		return true;
+	}
+	return false;
 }
 int PowerUp::getRandY()
 {
