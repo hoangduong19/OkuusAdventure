@@ -3,7 +3,7 @@
 🚀 Welcome to My SDL C++ Project! As known as my UET assignment about coding Game 🚀
 ![design](https://github.com/hoangduong19/OkuusAdventure/assets/160806540/10c8f30c-4c45-4db3-ab1c-a2e05a79b192)
 ## 🎉Introduction
-Using SDL2 library as main tool to develop, my remake of the classic game, Flappy Bird, brings back the beloved gameplay with a new fresh look and feel. In this game, instead of the original bird, you 'll control a Bird aka Okuu has an ability to explode anything see want! Certainly, it's a NUCLEAR power! You'll guide her through a world filled with green pipes. The goal? Simple! Navigate through the gaps in the pipes, aim for the high score, and don't touch anything! It's a test of patience, precision, and perseverance.
+Using SDL2 library as main tool to develop, my remake of the classic game, Flappy Bird, brings back the beloved gameplay with a new fresh look and feel. In this game, instead of the original bird, you 'll control a Bird aka Okuu has an ability to explode anything see want! Certainly, it's NUCLEAR power! You'll guide her through a world filled with green pipes. The goal? Simple! Navigate through the gaps in the pipes, aim for the high score, and don't touch anything! It's a test of patience, precision, and perseverance.
 ## 🎮Gameplay
 The controls are as simple as the original. But, there are some new features in my game comparing with Dong Nguyen's game:
 -  Press SPACE to make the bird flap.
