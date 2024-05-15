@@ -11,7 +11,7 @@ public:
 	int getRandY();
 	void speed();
 	bool isOffScreen();
-	bool isSkillReady();
-	void activateCooldown();
+	bool isSkillReady(bool& skill_ready);
+	void activateCooldown(bool& skill_ready);
 	void Render(SDL_Renderer* renderer);
 };
