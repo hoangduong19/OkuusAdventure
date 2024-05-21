@@ -60,7 +60,8 @@ bool Pipe::isOffScreen()
 
 int Pipe::getRand()
 {
-	return rand() % (305 - 140) + 140;//pipeHeight = 250
+	return rand() % (305 - 140) + 140;//pipeHeight_riu = 250, neu >140 thi pipebot se bi troi len mat dat
+														
 }
 void Pipe::Render(SDL_Renderer* renderer)
 {
