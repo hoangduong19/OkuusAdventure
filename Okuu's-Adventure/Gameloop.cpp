@@ -522,12 +522,10 @@ bool Gameloop::collision_shield()
 		int rightPipetop = pipetops[i].getDest().x + pipetops[i].getDest().w;
 		if (rightBird >= leftPipetop && leftBird <= rightPipetop && botBird >= topPipetop && topBird <= botPipetop)
 		{
-			int lastPipeIndex = (i + 2) % 3;
-			int lastPipeX = pipetops[lastPipeIndex].getDest().x; //lay pipe.x cuoi rồi cách dần các pipe với khoảng cách đều 400
 			int heightTop = pipetops[i].getRand();
-			pipetops[i].setDest(lastPipeX + 400, heightTop - Pipe_Height, 302 / 3, 840 / 2.75);
+			pipetops[i].setDest(540 + 400 * i, heightTop - Pipe_Height, 302 / 3, 840 / 2.75);
 			int yBot = pipetops[i].getDest().y + pipetops[i].getDest().h + Gap_Height;
-			pipebots[i].setDest(lastPipeX + 400, yBot, 302 / 3, 840 / 2.75);
+			pipebots[i].setDest(540 + 400 * i, yBot, 302 / 3, 840 / 2.75);
 			return true;
 		}
 	}
@@ -539,12 +537,10 @@ bool Gameloop::collision_shield()
 		int rightPipebot = pipebots[i].getDest().x + pipebots[i].getDest().w;
 		if (rightBird >= leftPipebot && leftBird <= rightPipebot && botBird >= topPipebot && topBird <= botPipebot)
 		{
-			int lastPipeIndex = (i + 2) % 3;
-			int lastPipeX = pipetops[lastPipeIndex].getDest().x; //lay pipe.x cuoi rồi cách dần các pipe với khoảng cách đều 400
 			int heightTop = pipetops[i].getRand();
-			pipetops[i].setDest(lastPipeX + 400, heightTop - Pipe_Height, 302 / 3, 840 / 2.75);
+			pipetops[i].setDest(540 + 400 * i, heightTop - Pipe_Height, 302 / 3, 840 / 2.75);
 			int yBot = pipetops[i].getDest().y + pipetops[i].getDest().h + Gap_Height;
-			pipebots[i].setDest(lastPipeX + 400, yBot, 302 / 3, 840 / 2.75);
+			pipebots[i].setDest(540 + 400 * i, yBot, 302 / 3, 840 / 2.75);
 			return true;
 		}
 	}
@@ -568,8 +564,8 @@ void Gameloop::check_score()
 	int leftBird = b.getDest().x;
 	for (int i = 0; i < 3; i++)
 	{
-		int rightPipetop = pipetops[i].getDest().x;
-		if (leftBird == rightPipetop)
+		int leftPipetop = pipetops[i].getDest().x;
+		if (leftBird == leftPipetop)
 		{
 			in_space_pipe = true;
 			break;
@@ -630,7 +626,7 @@ void Gameloop::update()
 		b.HandleGravity();
 		check_score();
 	}
-	if (bird_die && in_game )
+	if (bird_die && in_game)
 	{
 		b.FellGround(is_on_ground);
 	}
