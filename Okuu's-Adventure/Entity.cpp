@@ -35,7 +35,7 @@ SDL_Texture* Entity::getTexture()
 }
 void Entity::CreateTextfromTexture(const char* textpath, int size, std::string textToWrite, SDL_Color color, SDL_Renderer* renderer)
 {
-	texFromText = TextObject::loadText(textpath, size, textToWrite, color, renderer);
+	texFromText = TextObject::loadText(textpath, size, textToWrite, color, renderer);//xai static thay cho tao 1 bien class(vd text) roi dung 1 text.loadtext
 }
 SDL_Texture* Entity::getText()
 {
