@@ -1,7 +1,7 @@
 #include "TextureManager.h"
 SDL_Texture* TextureManager::Loadtexture(const char* filepath, SDL_Renderer* renderer)
 {
-	SDL_Surface* surface;
+	SDL_Surface* surface;//bao gom do phan giai, dinh dang pixel, du lieu pixel
 	surface = IMG_Load(filepath);
 	if (surface == NULL)
 	{
