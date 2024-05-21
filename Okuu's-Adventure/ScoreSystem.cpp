@@ -11,7 +11,7 @@ void Score::loadHighScore(const char* filename)
         std::cerr << "Unable to open file: " << filename << std::endl;
         exit(1);
     }
-    inFile >> highscore;
+    inFile >> highscore;//xuat highscore tu infile
     inFile.close();
 }
 void Score::saveHighScore(const char* filename) {
@@ -20,7 +20,7 @@ void Score::saveHighScore(const char* filename) {
         std::cerr << "Unable to open file: " << filename << std::endl;
         exit(1);
     }
-    outFile << highscore;
+    outFile << highscore;//xuat highscore hien tai vao outfile
     outFile.close();
 }
 void Score::updateHighScore(int counting_score, const char* filename) {
