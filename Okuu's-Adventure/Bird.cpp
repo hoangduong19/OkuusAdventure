@@ -14,10 +14,10 @@ void Bird::HandleGravity()
 {
 	if (playing)
 	{
-		int y = this->getDest().y + velY * deltatime;
-		velY += gravity;//gravity simulation
-		y += velY;
-		angle_ = (velY / 2) * 15;
+		int y = this->getDest().y ;
+		velY += gravity;//gravity simulation, cang trong trang thai roi thi roi cang nhanh
+		y += velY;//hieu ung chim roi nhanh hon
+		angle_ = (velY / 2) * 15;//cap nhat angle theo velY->stable
 		if (y < 0) y = 0;
 		this->setDest(this->getDest().x, y, this->getDest().w, this->getDest().h);
 	}
@@ -25,8 +25,8 @@ void Bird::HandleGravity()
 void Bird::HandleFly()
 {
 	playing = true;
-	velY = -5;
-	this->getDest().y -= velY * deltatime;
+	velY = -5;//reset lai velY ve trang thai ban dau khi nhan space
+	this->getDest().y += velY * deltatime;
 }
 void Bird::FellGround(bool& is_on_ground)
 {
