@@ -5,7 +5,7 @@ const double gravity = 0.25;
 Bird::Bird()
 {
 	velY = 0;
-	frame = 0;
+	angle_ = 0;
 	playing = false;
 }
 void Bird::HandleGravity()
