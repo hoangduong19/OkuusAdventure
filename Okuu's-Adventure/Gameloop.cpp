@@ -670,7 +670,7 @@ void Gameloop::update()
 			if (pipetops[i].isOffScreen() && pipebots[i].isOffScreen())
 			{
 				int lastPipeIndex = (i + 2) % 3;
-				int lastPipeX = pipetops[lastPipeIndex].getDest().x; //lay pipe.x cuoi rồi cách dần các pipe với khoảng cách đều 400
+				int lastPipeX = pipetops[lastPipeIndex].getDest().x; //lay pipe.x cuoi truoc pipe[i] rồi cách dần các pipe với khoảng cách đều 400
 				int heightTop = pipetops[i].getRand();
 				pipetops[i].setDest(lastPipeX + 400, heightTop - Pipe_Height, 302 / 3, 840 / 2.75);
 				int yBot = pipetops[i].getDest().y + pipetops[i].getDest().h + Gap_Height;
