@@ -13,9 +13,6 @@ public:
 	void SetAngle(int angle);
 private:
 	float velY;
-	const char* pathBird[2] = { "rsc/okuu_aftercut.png", "rsc/okuu_with_shield.png"};
-	int frame;
-	double timeFrame;
 	double angle_;
 	bool playing;
 };
