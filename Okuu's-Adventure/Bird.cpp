@@ -6,8 +6,6 @@ Bird::Bird()
 {
 	velY = 0;
 	frame = 0;
-	timeFrame = 0;
-	angle_ = 0;
 	playing = false;
 }
 void Bird::HandleGravity()
