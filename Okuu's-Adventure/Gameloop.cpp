@@ -9,11 +9,10 @@ Gameloop::Gameloop()
 	instruction_frame_shown = false;
 	x_button_shown = false;
 	start_shown = true; instruction_shown = true; quit_shown = true; restart_shown = false; level_shown = false; leftkey_shown = false; sound_on = true; sound_shown = true; level_button_shown = false;
-	level_classic_shown = false; ready = false; playing = false; bird_die = true; can_score = true; in_space_pipe = false; space_shown = false; menu_shown = true; in_game = false;
+	level_classic_shown = false; ready = false; playing = false; bird_die = true; can_score = false; in_space_pipe = false; space_shown = false; menu_shown = true; in_game = false;
 	is_on_ground = false; powerUp_shown = false; shield_shown = false; have_shield = false; skill_clicked = false; skill_ready = true;
 	count = 0;
 	currentScore = 0;
-	life = 1;
 	//BACKGROUND//
 	bg1.setSrc(0, 0, 576, 324);
 	bg1.setDest(0, 0, Screen_Width, Screen_Height+5);
@@ -176,7 +175,6 @@ void Gameloop::new_game()
 	powerUp_shown = false; shield_shown = false; have_shield = false; skill_clicked = false; skill_ready = true;
 	count = 0;
 	currentScore = 0;
-	life = 1;
 	score.CreateTextfromTexture("rsc/TimesSquare-m105.ttf", 100, std::to_string(0), { 255,255,255 }, renderer);
 	bg1.setSrc(0, 0, Screen_Width, Screen_Height);
 	bg1.setDest(0, 0, Screen_Width, Screen_Height + 5);
@@ -405,11 +403,11 @@ void Gameloop::Event()
 		}
 		else if (event.type == SDL_KEYDOWN)
 		{
-			count++;
 			switch (event.key.keysym.sym) {
 			case SDLK_SPACE:
 				if (in_game && !bird_die )
 				{
+					count++;
 					b.HandleFly();
 					Mix_VolumeChunk(flySFX, 70);
 					Mix_PlayChannel(-1, flySFX, 0);
@@ -522,10 +520,12 @@ bool Gameloop::collision_shield()
 		int rightPipetop = pipetops[i].getDest().x + pipetops[i].getDest().w;
 		if (rightBird >= leftPipetop && leftBird <= rightPipetop && botBird >= topPipetop && topBird <= botPipetop)
 		{
+			int lastPipeIndex = (i + 2) % 3;
+			int lastPipeX = pipetops[lastPipeIndex].getDest().x; //lay pipe.x cuoi rồi cách dần các pipe với khoảng cách đều 400
 			int heightTop = pipetops[i].getRand();
-			pipetops[i].setDest(540 + 400 * i, heightTop - Pipe_Height, 302 / 3, 840 / 2.75);
+			pipetops[i].setDest(lastPipeX + 400, heightTop - Pipe_Height, 302 / 3, 840 / 2.75);
 			int yBot = pipetops[i].getDest().y + pipetops[i].getDest().h + Gap_Height;
-			pipebots[i].setDest(540 + 400 * i, yBot, 302 / 3, 840 / 2.75);
+			pipebots[i].setDest(lastPipeX + 400, yBot, 302 / 3, 840 / 2.75);
 			return true;
 		}
 	}
@@ -537,10 +537,12 @@ bool Gameloop::collision_shield()
 		int rightPipebot = pipebots[i].getDest().x + pipebots[i].getDest().w;
 		if (rightBird >= leftPipebot && leftBird <= rightPipebot && botBird >= topPipebot && topBird <= botPipebot)
 		{
+			int lastPipeIndex = (i + 2) % 3;
+			int lastPipeX = pipetops[lastPipeIndex].getDest().x; //lay pipe.x cuoi rồi cách dần các pipe với khoảng cách đều 400
 			int heightTop = pipetops[i].getRand();
-			pipetops[i].setDest(540 + 400 * i, heightTop - Pipe_Height, 302 / 3, 840 / 2.75);
+			pipetops[i].setDest(lastPipeX + 400, heightTop - Pipe_Height, 302 / 3, 840 / 2.75);
 			int yBot = pipetops[i].getDest().y + pipetops[i].getDest().h + Gap_Height;
-			pipebots[i].setDest(540 + 400 * i, yBot, 302 / 3, 840 / 2.75);
+			pipebots[i].setDest(lastPipeX + 400, yBot, 302 / 3, 840 / 2.75);
 			return true;
 		}
 	}
@@ -567,12 +569,12 @@ void Gameloop::check_score()
 		int leftPipetop = pipetops[i].getDest().x;
 		if (leftBird == leftPipetop)
 		{
-			in_space_pipe = true;
+			can_score = true;
 			break;
 		}
 		else {
-			can_score = true;
-			in_space_pipe = false;
+			can_score = false;//trong trang thai co the cong diem
+			//in_space_pipe = false;
 		}
 	}
 }
@@ -600,7 +602,7 @@ void Gameloop::update()
 	{
 		have_shield = false;
 	}
-	if (in_space_pipe && can_score)
+	if (can_score)
 	{
 		currentScore++;
 		Mix_VolumeChunk(pointSFX, 50);
@@ -670,7 +672,7 @@ void Gameloop::update()
 			if (pipetops[i].isOffScreen() && pipebots[i].isOffScreen())
 			{
 				int lastPipeIndex = (i + 2) % 3;
-				int lastPipeX = pipetops[lastPipeIndex].getDest().x; //lay pipe.x cuoi truoc pipe[i] rồi cách dần các pipe với khoảng cách đều 400
+				int lastPipeX = pipetops[lastPipeIndex].getDest().x; //lay pipe.x cuoi rồi cách dần các pipe với khoảng cách đều 400
 				int heightTop = pipetops[i].getRand();
 				pipetops[i].setDest(lastPipeX + 400, heightTop - Pipe_Height, 302 / 3, 840 / 2.75);
 				int yBot = pipetops[i].getDest().y + pipetops[i].getDest().h + Gap_Height;
@@ -795,7 +797,7 @@ void Gameloop::render()
 			score.setDest(152, 250, 100, 100);
 		}
 		score.RenderText(renderer);
-		if (!highScore_call)
+		if (!highScore_call)//tao 1 bien bool de goi highscore, neu ko tao bien bool nay thi lai co bug?(ko the cap nhat lastest highscore
 		{
 			int highScore = scoreManager.getHighScore();
 			high_score.CreateTextfromTexture("rsc/TimesSquare-m105.ttf", 100, std::to_string(highScore), { 255,255,255 }, renderer);
