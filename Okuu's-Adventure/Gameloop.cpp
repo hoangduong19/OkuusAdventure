@@ -75,8 +75,8 @@ Gameloop::Gameloop()
 	{
 		int heightTop = pipetops[i].getRand();
 		pipetops[i].setDest(540 + 400 * i, heightTop - Pipe_Height, 302 / 3, 840 / 2.75);
-		int yBot = pipetops[i].getDest().y + pipetops[i].getDest().h + Gap_Height;// Calculate the y-coordinate for the bottom pipe
-		pipebots[i].setDest(540 + 400 * i, yBot, 302 / 3, 840 / 2.75); // Set the destination for the bottom pipe
+		int yBot = pipetops[i].getDest().y + pipetops[i].getDest().h + Gap_Height;
+		pipebots[i].setDest(540 + 400 * i, yBot, 302 / 3, 840 / 2.75); 
 	}
 	shield.setDest(750, 100, 50, 50);
 	okuu_protected.setDest(100, 18, 50, 49);
@@ -250,14 +250,14 @@ void Gameloop::toggleSound()
 {
 	if (sound_on)
 	{
-		Mix_VolumeMusic(0); // Mute background music
-		Mix_Volume(-1, 0);  // Mute all channels
+		Mix_VolumeMusic(0); 
+		Mix_Volume(-1, 0);  
 		sound_on = false;
 	}
 	else
 	{
-		Mix_VolumeMusic(10); // Set volume for background music (0-128)
-		Mix_Volume(-1, 128);  // Set volume for all channels (0-128)
+		Mix_VolumeMusic(10); 
+		Mix_Volume(-1, 128); 
 		sound_on = true;
 	}
 }
@@ -439,8 +439,8 @@ void Gameloop::Event()
 					{
 						int heightTop = pipetops[i].getRand();
 						pipetops[i].setDest(540 + 400 * i, heightTop - Pipe_Height, 302 / 3, 840 / 2.75);
-						int yBot = pipetops[i].getDest().y + pipetops[i].getDest().h + Gap_Height;// Calculate the y-coordinate for the bottom pipe
-						pipebots[i].setDest(540 + 400 * i, yBot, 302 / 3, 840 / 2.75); // Set the destination for the bottom pipe
+						int yBot = pipetops[i].getDest().y + pipetops[i].getDest().h + Gap_Height;
+						pipebots[i].setDest(540 + 400 * i, yBot, 302 / 3, 840 / 2.75); 
 					}
 					skill_clicked = true;
 					explosion.activateCooldown(skill_ready);
